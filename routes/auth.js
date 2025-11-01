@@ -9,7 +9,7 @@ router.get("/login", async (req, res) => {
         const site = await Site.findOne();
         return res.render("login", { pageTitle: "Login", site, res, req });
     } catch (err) {
-        return res.redirect("/");
+        return res.redirect(303, "/");
     }
 });
 
@@ -24,7 +24,7 @@ router.post('/login', (req, res, next) => {
 router.get('/logout', (req, res) => {
     req.logout();
     req.flash('success_msg', 'You are logged out');
-    res.redirect('/login');
+    res.redirect(303, '/login');
 });
 
 router.get("/register", async (req, res) => {
