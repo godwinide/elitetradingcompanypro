@@ -1,4 +1,4 @@
-const { model, Schema } = require("mongoose");
+const { model, Schema, models } = require("mongoose");
 
 const UserSchema = new Schema({
     firstname: {
@@ -78,9 +78,9 @@ const UserSchema = new Schema({
     regDate: {
         type: Date,
         required: false,
-        default: Date.now()
+        default: Date.now
     }
 });
 
-module.exports = User = model("User", UserSchema);
+module.exports = models.User || model("User", UserSchema);
 
